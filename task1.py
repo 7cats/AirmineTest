@@ -38,26 +38,26 @@ def distanceDF(places):
     return distDF
     
 def main():
-    ## Get input n. Check if it is integer
+    ## Get input n. Check if it is an integer and larger than 1
     print("Please enter an integer larger than 1: ")
     n = input()
     try:
         n = int(n)
         if n >= 1:
-            print("{} points will be generated.".format(n))
+            print("{} points will be generated. \n".format(n))
         else:
-            print("Integer is smaller than 1. Default datasource is used.")
+            print("Integer is smaller than 1. Default datasource is used. \n")
             n = None
     except:
         # if input is not intege larger than 1, use places.csv data
-        print("Input was not an integer number. Default datasource is used.")
+        print("Input was not an integer number. Default datasource is used. \n")
         n = None
 
     random.seed(123) # set seed
     
     ## check if n is valid, if not, take places.csv as input
     if n is None:
-        places = round(pd.read_csv("D:/Python/Airmine_Code_Test/Arimine/places.csv", sep = ','),2)
+        places = round(pd.read_csv("./places.csv", sep = ','),2)
     else: 
     ## Yes, generate n ramdon points, round to 2 decimal
         places = {'Name':["Location{}".format(i) for i in range(1, n+1)],
@@ -69,7 +69,7 @@ def main():
     distDF = distanceDF(places)
     ## get mean and closest pair
     dist = distDF['Distance']
-    distMean = distDF['Distance'].mean()
+    distMean = round(distDF['Distance'].mean(),4)
     distClosest = dist.iloc[(dist - distMean).abs().argsort()[:1]]
     
     ## format output    
@@ -81,7 +81,7 @@ def main():
                 'Location_2':[places.Name[distDF.point2[i]]],
                 'Distance(km)':[distDF.Distance[i]]})
             distOutput = pd.concat([distOutput, newEntry], ignore_index = True)
-    else: # n from input uses lat&lon to show exact location
+    else: # n from input uses lat&lon to show exact location in output
         for i in range(0, len(distDF)):
             newEntry = pd.DataFrame({
                 'Location_1':["P({}, {})".format(places.Latitude[distDF.point1[i]], places.Longitude[distDF.point1[i]])],
@@ -91,14 +91,14 @@ def main():
     ## print output
     print("Distances of pairs of points in ascending order:")
     print(distOutput.to_string(index = False))
-    idPair = distClosest.index.astype(int)[0]
+    idCP = distClosest.index.astype(int)[0] # index of closest pair
     distDF = distDF.values.tolist()
-    print("Average Distance: {}km. Closest pair: point_{} - point_{} Distance: {}km".format(distMean, int(distDF[idPair][0]),int(distDF[idPair][1]),int(distDF[idPair][2])))
+    print("\nAverage Distance: {}km. Closest pair: point_{} - point_{} Distance: {}km \n".format(distMean, int(distDF[idCP][0]),int(distDF[idCP][1]),distDF[idCP][2]))
     return distOutput
 
 if __name__ == "__main__":
     output = main()
-    print(output)
+    # print(output)
 
 
 
