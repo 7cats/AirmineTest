@@ -1,7 +1,7 @@
 ## Airmine test code task 
-This is a program for Airmine test task1. It calculates the great circle distances between points.
+This is a program for Airmine test task1. It calculates the great circle distances between points.  
 This porjects includes the following files:
- 1. this README.md  
+1. this README.md  
 2. places.csv  
 3. task1.py  
 
@@ -21,16 +21,16 @@ Formula could be found [here](https://en.wikipedia.org/wiki/Great-circle_distanc
 This is the function for calculating all distances between pairs of points using ***function calDist*** and stores all distances in a dataframe.
 
 ##### main
-This is the main function which includes:
+This is the main part of the program which includes:
 1. Take input **n**, if n is not provided, generate input.
 2. Generate dataframe of distances and calculate the mean and closest pair.
 3. Format the output
 
 ### Setup and use
 1. Clone repository to local location
-2. Run task1.py
+2. Run task1.py  
 Enter an integer after command line prompt: "Please enter an integer larger than 1:"  
-If desired to use default dataset, enter anything else.
+If desired to use default dataset, enter anything else.  
 Program will generate output.
 3. Output  
 The output includes two parts.    
