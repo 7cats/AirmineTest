@@ -15,7 +15,7 @@ This porjects includes the following files:
 ### Functions
 ##### calDist
 This is the function for calculating the air distance between two location on the earth.  
-Formula could be found [here](http://google.com)in https://en.wikipedia.org/wiki/Great-circle_distance#:~:text=The%20great%2Dcircle%20distance%2C%20orthodromic,line%20through%20the%20sphere's%20interior).
+Formula could be found [here](https://en.wikipedia.org/wiki/Great-circle_distance#:~:text=The%20great%2Dcircle%20distance%2C%20orthodromic,line%20through%20the%20sphere's%20interior).
 
 ##### distDF
 This is the function for calculating all distances between pairs of points using ***function calDist*** and stores all distances in a dataframe.
