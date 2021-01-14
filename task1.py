@@ -75,14 +75,14 @@ def main():
     ## format output    
     distOutput = pd.DataFrame({'Location_1': [], 'Location_2': [], 'Distance(km)': []})
     if n is None: # default dataset uses real location name
-        for i in range(0, len(distDF)):
+        for i in range(len(distDF)):
             newEntry = pd.DataFrame({
                 'Location_1':[places.Name[distDF.point1[i]]],
                 'Location_2':[places.Name[distDF.point2[i]]],
                 'Distance(km)':[distDF.Distance[i]]})
             distOutput = pd.concat([distOutput, newEntry], ignore_index = True)
     else: # n from input uses lat&lon to show exact location in output
-        for i in range(0, len(distDF)):
+        for i in range(len(distDF)):
             newEntry = pd.DataFrame({
                 'Location_1':["P({}, {})".format(places.Latitude[distDF.point1[i]], places.Longitude[distDF.point1[i]])],
                 'Location_2':["P({}, {})".format(places.Latitude[distDF.point2[i]], places.Longitude[distDF.point2[i]])],
